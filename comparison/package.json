@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "comparison",
+  "version": "0.0.0",
+  "description": "",
+  "main": "comparison.js",
+  "author": "Michael Ficarra",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "bencode-js": "0.0.7",
+    "bson": "^0.5.2",
+    "cbor-sync": "^1.0.2",
+    "edn": "0.0.0",
+    "lzma-purejs": "^0.9.3",
+    "msgpack": "^1.0.2"
+  }
+}
