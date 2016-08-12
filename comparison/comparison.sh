@@ -1,3 +1,3 @@
-npm install
-node test.js
-perl test.pl
+npm install && \
+cpanm --installdeps . && \
+(node comparison.js; perl comparison.pl)
