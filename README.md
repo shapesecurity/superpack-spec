@@ -17,6 +17,7 @@ A comparison of schemaless serialisation formats on [`comparison/data.json`](htt
 | [edn](https://github.com/edn-format/edn)                             |        3245B |            596B | YES        | no                  | YES            |
 | [JSON](http://www.json.org/)                                         |        3291B |            598B | no         | no                  | arguably       |
 | [BSON](http://bsonspec.org/)                                         |        5317B |            840B | YES        | YES                 | no             |
+| [YAML](http://yaml.org/)                                             |        6414B |            635B | YES        | no                  | YES            |
 
 SuperPack is designed to
 

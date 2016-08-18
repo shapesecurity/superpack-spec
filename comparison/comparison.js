@@ -6,6 +6,7 @@ let edn = require('edn')
 let msgpack = require('msgpack');
 let superpack = require('superpack');
 var cbor = require('cbor-sync');
+var yaml = require('js-yaml');
 
 let lzma = require('lzma-purejs');
 
@@ -19,6 +20,7 @@ let results = {
   bencode: bencode.encode(data),
   edn: edn.stringify(data),
   CBOR: cbor.encode(data),
+  YAML: yaml.safeDump(data),
 };
 
 var algos = Object.keys(results).sort((a, b) => results[a].length - results[b].length);
