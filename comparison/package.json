@@ -12,6 +12,7 @@
     "cbor-sync": "^1.0.2",
     "edn": "git@github.com:josh/js-edn.git#c74878462f655659e77d7d847e75973f73cf4e80",
     "lzma-purejs": "^0.9.3",
-    "msgpack": "^1.0.2"
+    "msgpack": "^1.0.2",
+    "superpack": "shapesecurity/superpack-js#master"
   }
 }
