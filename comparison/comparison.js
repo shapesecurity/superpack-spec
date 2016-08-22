@@ -8,7 +8,7 @@ let superpack = require('superpack');
 var cbor = require('cbor-sync');
 var yaml = require('js-yaml');
 
-let lzma = require('lzma-purejs');
+let zlib = require('zlib');
 
 let data = JSON.parse(fs.readFileSync('data.json').toString('utf8'));
 
@@ -27,6 +27,7 @@ var algos = Object.keys(results).sort((a, b) => results[a].length - results[b].l
 
 algos.forEach((algo) => {
   var result = results[algo];
-  if (typeof result == 'string') result = new Buffer(result, 'utf8');
-  console.log('%s: %dB; after LZMA: %dB', algo, result.length, lzma.compressFile(result).length);
+  if (typeof result === 'string') result = Buffer.from(result, 'utf8');
+  else if (Array.isArray(result)) result = Buffer.from(result);
+  console.log('%s: %dB; after gzip: %dB', algo, result.length, zlib.gzipSync(result).length);
 });

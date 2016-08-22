@@ -1,3 +1,3 @@
 requires 'JSON::Parse';
 requires 'Sereal';
-requires 'IO::Compress::Lzma';
+requires 'IO::Compress::Gzip';
