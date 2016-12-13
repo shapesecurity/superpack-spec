@@ -10,7 +10,21 @@ var yaml = require('js-yaml');
 
 let zlib = require('zlib');
 
-let data = JSON.parse(fs.readFileSync('data.json').toString('utf8'));
+function* lines(buffer) {
+  while (true) {
+    let index = buffer.indexOf('\n');
+    if (index < 0) {
+      yield buffer;
+      break;
+    } else {
+      yield buffer.slice(0, index);
+      buffer = buffer.slice(index + 1);
+    }
+  }
+}
+
+const file = 'node_modules/public-domain-nypl-captures/data/pd_items.ndjson';
+let data = Array.from(lines(fs.readFileSync(file))).slice(0, 1000).map(JSON.parse);
 
 let results = {
   JSON: JSON.stringify(data, null, 0),

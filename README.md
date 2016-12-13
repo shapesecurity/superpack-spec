@@ -5,19 +5,20 @@ it is particularly suitable for encoding values with repeated structure: arrays
 of booleans, strings used more than once, objects which have the same shape,
 etc.
 
-A comparison of schemaless serialisation formats on [`comparison/data.json`](https://github.com/shapesecurity/superpack-spec/blob/master/comparison/data.json):
+A comparison of schemaless serialisation formats run on 1000 [public domain book records](https://www.npmjs.com/package/public-domain-nypl-captures)
+from the [New York Public Library Digital Collections API](http://api.repo.nypl.org/):
 
 | name                                                                 | encoded size | gzip compressed | extensible | rich built-in types | human-readable |
 | -------------------------------------------------------------------- | -----------: | --------------: | ---------- | ------------------- | -------------- |
-| *SuperPack*                                                          |        1344B |            665B | YES        | no                  | no             |
-| [Sereal](https://github.com/Sereal/Sereal)                           |        1924B |            764B | YES        | no                  | no             |
-| [MessagePack](http://msgpack.org)                                    |        2423B |            641B | YES        | no                  | no             |
-| [CBOR](http://cbor.io/)                                              |        2558B |            647B | YES        | YES                 | no             |
-| [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |        2993B |            597B | no         | no                  | arguably       |
-| [edn](https://github.com/edn-format/edn)                             |        3245B |            610B | YES        | no                  | YES            |
-| [JSON](http://www.json.org/)                                         |        3291B |            614B | no         | no                  | arguably       |
-| [BSON](http://bsonspec.org/)                                         |        5317B |            983B | YES        | YES                 | no             |
-| [YAML](http://yaml.org/)                                             |        6414B |            697B | YES        | no                  | YES            |
+| *SuperPack*                                                          |      810411B |         224534B | YES        | no                  | no             |
+| [Sereal](https://github.com/Sereal/Sereal)                           |     1438974B |         263877B | YES        | no                  | no             |
+| [MessagePack](http://msgpack.org)                                    |     2019749B |         271652B | YES        | no                  | no             |
+| [CBOR](http://cbor.io/)                                              |     2025561B |         270380B | YES        | YES                 | no             |
+| [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |     2208153B |         273791B | no         | no                  | arguably       |
+| [edn](https://github.com/edn-format/edn)                             |     2257810B |         261175B | YES        | no                  | YES            |
+| [JSON](http://www.json.org/)                                         |     2275987B |         260878B | no         | no                  | arguably       |
+| [BSON](http://bsonspec.org/)                                         |     2353043B |         314438B | YES        | YES                 | no             |
+| [YAML](http://yaml.org/)                                             |     2444730B |         275741B | YES        | no                  | YES            |
 
 SuperPack is designed to
 
