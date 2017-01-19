@@ -315,7 +315,7 @@ A null-terminated string of any number of UTF-8 bytes. The UTF-8 bytes must not 
 #### strref
 
     +--------+--------+
-    |  0xF1  |xxxxxxxx|
+    |  0xF3  |xxxxxxxx|
     +--------+--------+
 
 The string at index `xxxxxxxx` in the string lookup table.
