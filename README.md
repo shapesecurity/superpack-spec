@@ -438,9 +438,9 @@ transcoder.extend(
   // detect values which require this custom serialisation
   x => x instanceof RegExp,
   // serialiser: return an intermediate value which will be encoded instead
-  r => [r.pattern, r.flags],
+  r => [r.source, r.flags],
   // deserialiser: from the intermediate value, reconstruct the original value
-  ([pattern, flags]) => RegExp(pattern, flags),
+  ([source, flags]) => RegExp(source, flags),
 );
 ```
 
