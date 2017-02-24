@@ -422,17 +422,18 @@ Boolean-valued map literal, for implementations which do not use repeated keyset
 
 #### extension\*
 
-    +--------+--------+~~~~~~+======+
-    |  0xFF  |xxxxxxxx| uint | data |
-    +--------+--------+~~~~~~+======+
+    +--------+~~~~~~+~~~~~~~+
+    |  0xFF  | uint | value |
+    +--------+~~~~~~+~~~~~~~+
 
-Specifies an extension type tag `xxxxxxxx`, followed by a `uint` length, followed by zero or more bytes of data.
+A `uint` extension point followed by any single value. Represents an otherwise unsupported value in terms of a supported value, identified by the extension point.
 
 Encoders are expected to provide an interface for a consumer to specify a serialisation and deserialisation mechanism for a given type of data.
 
 ```js
-SuperPackTranscoder.extend(
-  // extension point: 0 through 127
+let transcoder = new SuperPackTranscoder;
+transcoder.extend(
+  // extension point
   0,
   // detect values which require this custom serialisation
   x => x instanceof RegExp,
@@ -442,11 +443,6 @@ SuperPackTranscoder.extend(
   ([pattern, flags]) => RegExp(pattern, flags),
 );
 ```
-
-The extension ranges are reserved as follows:
-
-* Extension points 0-127 are available for user-specified extension types.
-* Extension points 128-255 are currently reserved for future spec additions.
 
 
 ## Optimisations
