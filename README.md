@@ -408,17 +408,24 @@ let transcoder = new SuperPackTranscoder;
 transcoder.extend(
   // extension point
   0,
-  // detect values which require this custom serialisation
-  x => x instanceof RegExp,
-  // serialiser: return an intermediate value which will be encoded instead
-  r => [r.source, r.flags],
-  // deserialiser: from the intermediate value, reconstruct the original value
-  ([source, flags]) => RegExp(source, flags),
+  class {
+    // detect values which require this custom serialisation
+    isCandidate(x) { return x instanceof RegExp; },
+    // return an intermediate value which will be encoded instead
+    serialise(r) { return [r.source, r.flags]; },
+    // from the intermediate value, reconstruct the original value
+    deserialise([source, flags]) { return RegExp(source, flags); },
+  }
 );
 ```
 
-A SuperPack encoder must not recursively apply an extension when encoding the
-result of its own serialisation.
+If the extension uses state to keep track of values it has marked as
+candidates, it can use that state in conjunction with the optional
+`shouldSerialise` method to determine if an extension should be applied to the
+value. `shouldSerialise` will only ever be called once all candidates have been
+determined (see Extensions and Recursion for an exception to this). If
+`shouldSerialise` is not provided, the extension behaves as if it was given a
+function which always returns `true`.
 
 ### Extension memos
 
@@ -427,30 +434,31 @@ values encoded by an extension. This is mostly useful for deduplication and
 optimisation.
 
 ```js
-let symbols = [];
-let decodedSymbols = [];
-
 // preserves ECMAScript Symbol identity and description
-let symbolExtension = {
-  detector: x => typeof x === 'symbol',
-  serialiser(s) {
-    let i = symbols.indexOf(s);
+class SymbolExtension {
+  constructor() {
+    this.symbols = [];
+  }
+  isCandidate(x) {
+    return typeof x === 'symbol' || x && x.constructor === Symbol;
+  }
+  serialise(s) {
+    let i = this.symbols.indexOf(s);
     if (i >= 0) return i;
-    return symbols.push(s) - 1;
-  },
-  deserialiser(n, memo) {
-    if (decodedSymbols[n] == null) {
+    return this.symbols.push(s) - 1;
+  }
+  deserialise(n, memo) {
+    if (this.symbols[n] == null) {
       let s = Symbol(memo[n]);
-      decodedSymbols[n] = s;
+      this.symbols[n] = s;
       return s;
-    } else {
-      return decodedSymbols[n];
     }
-  },
-  memo: () => symbols.map(sym => String(sym).slice(7, -1)),
-};
+    return this.symbols[n];
+  }
+  memo() { return this.symbols.map(sym => String(sym).slice(7, -1)); }
+}
 
-let encoded = encode(data, { extensions: { 0: symbolExtension } });
+let encoded = encode(data, { extensions: { 0: SymbolExtension } });
 ```
 
 Memos are only prepended for extensions that define the optional `memo`
@@ -474,3 +482,14 @@ As with any compression-like scheme, highly-compressed inputs which result in a
 much larger decoded value are a concern. SuperPack decoders are advised to
 assume that their input is potentially adversarial and be resistant to attacks
 based on expansion.
+
+### Extensions and Recursion
+
+Some extensions will serialise to values which could have themselves been
+identified as a candidate for applying the extension. In most cases, it is not
+desirable to apply the extension again to the serialised value, and by default,
+this is how a SuperPack encoder will work. But for some extensions, the
+recursion is desirable, and those extensions may supply a
+`shouldApplyRecursively` function which returns `true` to opt in to this
+behaviour. Be very careful when writing extensions that utilise this
+functionality, as it can easily lead to infinite recursion.
