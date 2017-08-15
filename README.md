@@ -423,9 +423,9 @@ If the extension uses state to keep track of values it has marked as
 candidates, it can use that state in conjunction with the optional
 `shouldSerialise` method to determine if an extension should be applied to the
 value. `shouldSerialise` will only ever be called once all candidates have been
-determined (see Extensions and Recursion for an exception to this). If
-`shouldSerialise` is not provided, the extension behaves as if it was given a
-function which always returns `true`.
+determined (see Extensions and Recursion for an exception to this). This is
+useful for optimisations that need to see all of the data being encoded before
+being effective. Most extensions will always return `true` from this function.
 
 ### Extension memos
 
@@ -461,11 +461,11 @@ class SymbolExtension {
 let encoded = encode(data, { extensions: { 0: SymbolExtension } });
 ```
 
-Memos are only prepended for extensions that define the optional `memo`
-function. Memos are encoded and prepended to the SuperPack payload in
-descending extension point order. During the encoding of a memo, extensions
-that define the optional `memo` function must not be applied if their extension
-point is greater than that of the extension whose memo is being encoded.
+Memos are encoded and prepended to the SuperPack payload in descending
+extension point order. Memos are only prepended for extensions that indicate
+that they require a memo. During the encoding of a memo, extensions that use a
+memo must not be applied if their extension point is greater than that of the
+extension whose memo is being encoded.
 
 #### Examples
 
