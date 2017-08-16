@@ -8,13 +8,12 @@ booleans, strings used more than once, objects which have the same shape, etc.
 A comparison of schemaless serialisation formats run on 1000 [public domain book records](https://www.npmjs.com/package/public-domain-nypl-captures)
 from the [New York Public Library Digital Collections API](http://api.repo.nypl.org/):
 
-**TODO: split into SuperPack with no optimisations and SuperPack with only built-in optimisations**
-
 | name                                                                 | encoded size | gzip compressed | extensible | rich built-in types | human-readable |
 | -------------------------------------------------------------------- | -----------: | --------------: | ---------- | ------------------- | -------------- |
-| *SuperPack*                                                          |      810411B |         224534B | YES        | no                  | no             |
-| [Sereal](https://github.com/Sereal/Sereal)                           |     1438974B |         263877B | YES        | no                  | no             |
+| *SuperPack*<sup>1</sup>                                              |      768121B |         225789B | YES        | no                  | no             |
+| [Sereal](https://github.com/Sereal/Sereal)                           |     1442191B |         268279B | YES        | no                  | no             |
 | [MessagePack](http://msgpack.org)                                    |     2019749B |         271652B | YES        | no                  | no             |
+| *SuperPack*<sup>2</sup>                                              |     2024460B |         264545B | YES        | no                  | no             |
 | [CBOR](http://cbor.io/)                                              |     2025561B |         270380B | YES        | YES                 | no             |
 | [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |     2208153B |         273791B | no         | no                  | arguably       |
 | [edn](https://github.com/edn-format/edn)                             |     2257810B |         261175B | YES        | no                  | YES            |

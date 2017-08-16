@@ -1,7 +1,7 @@
 let fs = require('fs');
 
 let bencode = require('bencode-js');
-let bson = require('bson');
+let BSON = require('bson');
 let edn = require('edn')
 let msgpack = require('msgpack');
 let superpack = require('superpack');
@@ -28,8 +28,9 @@ let data = Array.from(lines(fs.readFileSync(file))).slice(0, 1000).map(JSON.pars
 
 let results = {
   JSON: JSON.stringify(data, null, 0),
-  BSON: new bson.BSONPure.BSON().serialize(data),
-  SuperPack: superpack.encode(data),
+  BSON: new BSON().serialize(data),
+  'SuperPack (built-in optimisations)': superpack.encode(data, { extensions: superpack.default.recommendedOptimisations }),
+  'SuperPack (no optimisations)': superpack.encode(data),
   MessagePack: msgpack.pack(data),
   bencode: bencode.encode(data),
   edn: edn.stringify(data),

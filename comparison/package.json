@@ -7,13 +7,14 @@
   "author": "Michael Ficarra",
   "license": "Apache-2.0",
   "dependencies": {
-    "bencode-js": "0.0.7",
-    "bson": "^0.5.2",
+    "arson": "^0.2.5",
+    "bencode-js": "0.0.8",
+    "bson": "^1.0.4",
     "cbor-sync": "^1.0.2",
-    "edn": "git@github.com:josh/js-edn.git#c74878462f655659e77d7d847e75973f73cf4e80",
+    "edn": "git+ssh://git@github.com/josh/js-edn.git#c74878462f655659e77d7d847e75973f73cf4e80",
     "js-yaml": "^3.6.1",
     "msgpack": "^1.0.2",
     "public-domain-nypl-captures": "1.1.0",
-    "superpack": "shapesecurity/superpack-js#master"
+    "superpack": "github:shapesecurity/superpack-js#master"
   }
 }
