@@ -10,17 +10,17 @@ from the [New York Public Library Digital Collections API](http://api.repo.nypl.
 
 | name                                                                 | encoded size | gzip compressed | extensible    | rich built-in types | human-readable |
 | -------------------------------------------------------------------- | -----------: | --------------: | ----------    | ------------------- | -------------- |
-| *SuperPack*<sup>1</sup>                                              |      768121B |         225789B | YES           | no                  | no             |
-| [Sereal](https://github.com/Sereal/Sereal)                           |     1442191B |         268279B | YES           | no                  | no             |
-| [MessagePack](http://msgpack.org)                                    |     2019749B |         271652B | YES           | no                  | no             |
-| *SuperPack*<sup>2</sup>                                              |     2024460B |         264545B | YES           | no                  | no             |
-| [CBOR](http://cbor.io/)                                              |     2025561B |         270380B | YES           | YES                 | no             |
-| [ARSON](https://github.com/benjamn/arson)                            |     2048144B |         361479B | theoretically | YES                 | arguably       |
-| [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |     2208153B |         273791B | no            | no                  | arguably       |
-| [edn](https://github.com/edn-format/edn)                             |     2257810B |         261175B | YES           | no                  | YES            |
-| [JSON](http://www.json.org/)                                         |     2275987B |         260878B | no            | no                  | arguably       |
-| [BSON](http://bsonspec.org/)                                         |     2353043B |         314438B | YES           | YES                 | no             |
-| [YAML](http://yaml.org/)                                             |     2444730B |         275741B | YES           | no                  | YES            |
+| *SuperPack*<sup>1</sup>                                              |      768.1KB |         225.8KB | YES           | no                  | no             |
+| [Sereal](https://github.com/Sereal/Sereal)                           |     1442.2KB |         268.3KB | YES           | no                  | no             |
+| [MessagePack](http://msgpack.org)                                    |     2019.7KB |         271.7KB | YES           | no                  | no             |
+| *SuperPack*<sup>2</sup>                                              |     2024.5KB |         264.5KB | YES           | no                  | no             |
+| [CBOR](http://cbor.io/)                                              |     2025.6KB |         270.4KB | YES           | YES                 | no             |
+| [ARSON](https://github.com/benjamn/arson)                            |     2048.1KB |         361.5KB | theoretically | YES                 | arguably       |
+| [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |     2208.2KB |         273.8KB | no            | no                  | arguably       |
+| [edn](https://github.com/edn-format/edn)                             |     2257.8KB |         261.2KB | YES           | no                  | YES            |
+| [JSON](http://www.json.org/)                                         |     2276.0KB |         260.9KB | no            | no                  | arguably       |
+| [BSON](http://bsonspec.org/)                                         |     2353.0KB |         314.4KB | YES           | YES                 | no             |
+| [YAML](http://yaml.org/)                                             |     2444.7KB |         275.7KB | YES           | no                  | YES            |
 
 
 SuperPack is designed to
