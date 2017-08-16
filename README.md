@@ -22,6 +22,9 @@ from the [New York Public Library Digital Collections API](http://api.repo.nypl.
 | [BSON](http://bsonspec.org/)                                         |     2353.0KB |         314.4KB | YES           | YES                 | no             |
 | [YAML](http://yaml.org/)                                             |     2444.7KB |         275.7KB | YES           | no                  | YES            |
 
+1. with built-in optimisations enabled
+1. with no optimisations enabled
+
 
 SuperPack is designed to
 
