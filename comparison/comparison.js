@@ -1,7 +1,8 @@
 let fs = require('fs');
 
+let ARSON = require('arson');
 let bencode = require('bencode-js');
-let bson = require('bson');
+let BSON = require('bson');
 let edn = require('edn')
 let msgpack = require('msgpack');
 let superpack = require('superpack');
@@ -27,9 +28,11 @@ const file = 'node_modules/public-domain-nypl-captures/data/pd_items.ndjson';
 let data = Array.from(lines(fs.readFileSync(file))).slice(0, 1000).map(JSON.parse);
 
 let results = {
+  ARSON: ARSON.encode(data),
   JSON: JSON.stringify(data, null, 0),
-  BSON: new bson.BSONPure.BSON().serialize(data),
-  SuperPack: superpack.encode(data),
+  BSON: new BSON().serialize(data),
+  'SuperPack (built-in optimisations)': superpack.encode(data, { extensions: superpack.default.recommendedOptimisations }),
+  'SuperPack (no optimisations)': superpack.encode(data),
   MessagePack: msgpack.pack(data),
   bencode: bencode.encode(data),
   edn: edn.stringify(data),
