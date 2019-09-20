@@ -63,41 +63,41 @@ SuperPack decoder is a function from a SuperPack payload to a value.
 - A SuperPack decoder must be able to decode any SuperPack value.
 
 ### Type Tags
+| Hex  | Dec | Binary     | Tag Name                  |
+| ---- | --- | ---------- | ------------------------- |
+| 0x00 |   0 | `00------` | [uint6](#uint6)           |
+| 0x40 |  64 | `01------` | [uint14](#uint14)         |
+| 0x80 | 128 | `10000000` | RESERVED                  |
+| 0x81 | 129 | `1000----` | [nint4](#nint4)           |
+| 0x90 | 144 | `1001----` | [barray4](#barray4)       |
+| 0xA0 | 160 | `101-----` | [array5](#array5)         |
+| 0xC0 | 192 | `110-----` | [str5](#str5)             |
+| 0xE0 | 224 | `11100000` | [false](#false)           |
+| 0xE1 | 225 | `11100001` | [true](#true)             |
+| 0xE2 | 226 | `11100010` | [null](#null)             |
+| 0xE3 | 227 | `11100011` | [undefined](#undefined)   |
+| 0xE4 | 228 | `11100100` | [uint16](#uint16)         |
+| 0xE5 | 229 | `11100101` | [uint24](#uint24)         |
+| 0xE6 | 230 | `11100110` | [uint32](#uint32)         |
+| 0xE7 | 231 | `11100111` | [uint64](#uint64)         |
+| 0xE8 | 232 | `11101000` | [nint8](#nint8)           |
+| 0xE9 | 233 | `11101001` | [nint16](#nint16)         |
+| 0xEA | 234 | `11101010` | [nint32](#nint32)         |
+| 0xEB | 235 | `11101011` | [nint64](#nint64)         |
+| 0xEC | 236 | `11101100` | [float32](#float32)       |
+| 0xED | 237 | `11101101` | [double64](#double64)     |
+| 0xEE | 238 | `11101110` | [timestamp](#timestamp)   |
+| 0xEF | 239 | `11101111` | [binary\*](#binary)       |
+| 0xF0 | 240 | `11110000` | [cstring](#cstring)       |
+| 0xF1 | 241 | `11110001` | [str\*](#str)             |
+| 0xF2 | 242 | `11110010` | [array\*](#array)         |
+| 0xF3 | 243 | `11110011` | [barray\*](#barray)       |
+| 0xF4 | 244 | `11110100` | [map](#map)               |
+| 0xF5 | 245 | `11110101` | [bmap](#bmap)             |
+| 0xF6 | 246 | `11110110` | RESERVED                  |
+| 0xF7 | 247 | `11110111` | [extension\*](#extension) |
+| 0xF8 | 251 | `11111---` | [extension3](#extension3) |
 
-| Hex  | Dec | Binary   | Tag Name                  |
-| ---- | --- | -------- | ------------------------- |
-| 0x00 |   0 | 00------ | [uint6](#uint6)           |
-| 0x40 |  64 | 01------ | [uint14](#uint14)         |
-| 0x80 | 128 | 10000000 | RESERVED                  |
-| 0x81 | 129 | 1000---- | [nint4](#nint4)           |
-| 0x90 | 144 | 1001---- | [barray4](#barray4)       |
-| 0xA0 | 160 | 101----- | [array5](#array5)         |
-| 0xC0 | 192 | 110----- | [str5](#str5)             |
-| 0xE0 | 224 | 11100000 | [false](#false)           |
-| 0xE1 | 225 | 11100001 | [true](#true)             |
-| 0xE2 | 226 | 11100010 | [null](#null)             |
-| 0xE3 | 227 | 11100011 | [undefined](#undefined)   |
-| 0xE4 | 228 | 11100100 | [uint16](#uint16)         |
-| 0xE5 | 229 | 11100101 | [uint24](#uint24)         |
-| 0xE6 | 230 | 11100110 | [uint32](#uint32)         |
-| 0xE7 | 231 | 11100111 | [uint64](#uint64)         |
-| 0xE8 | 232 | 11101000 | [nint8](#nint8)           |
-| 0xE9 | 233 | 11101001 | [nint16](#nint16)         |
-| 0xEA | 234 | 11101010 | [nint32](#nint32)         |
-| 0xEB | 235 | 11101011 | [nint64](#nint64)         |
-| 0xEC | 236 | 11101100 | [float32](#float32)       |
-| 0xED | 237 | 11101101 | [double64](#double64)     |
-| 0xEE | 238 | 11101110 | [timestamp](#timestamp)   |
-| 0xEF | 239 | 11101111 | [binary\*](#binary)       |
-| 0xF0 | 240 | 11110000 | [cstring](#cstring)       |
-| 0xF1 | 241 | 11110001 | [str\*](#str)             |
-| 0xF2 | 242 | 11110010 | [array\*](#array)         |
-| 0xF3 | 243 | 11110011 | [barray\*](#barray)       |
-| 0xF4 | 244 | 11110100 | [map](#map)               |
-| 0xF5 | 245 | 11110101 | [bmap](#bmap)             |
-| 0xF6 | 246 | 11110110 | RESERVED                  |
-| 0xF7 | 247 | 11110111 | [extension\*](#extension) |
-| 0xF8 | 251 | 11111--- | [extension3](#extension3) |
 
 
 ## Type Breakdown
