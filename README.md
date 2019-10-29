@@ -8,19 +8,19 @@ booleans, strings used more than once, objects which have the same shape, etc.
 A comparison of schemaless serialisation formats run on 1000 [public domain book records](https://www.npmjs.com/package/public-domain-nypl-captures)
 from the [New York Public Library Digital Collections API](http://api.repo.nypl.org/):
 
-| name                                                                 | encoded size | gzip compressed | extensible    | rich built-in types | human-readable |
-| -------------------------------------------------------------------- | -----------: | --------------: | ----------    | ------------------- | -------------- |
-| *SuperPack*<sup>1</sup>                                              |      768.1KB |         225.8KB | YES           | no                  | no             |
-| [Sereal](https://github.com/Sereal/Sereal)                           |     1442.2KB |         268.3KB | YES           | no                  | no             |
-| [MessagePack](http://msgpack.org)                                    |     2019.7KB |         271.7KB | YES           | no                  | no             |
-| *SuperPack*<sup>2</sup>                                              |     2024.5KB |         264.5KB | YES           | no                  | no             |
-| [CBOR](http://cbor.io/)                                              |     2025.6KB |         270.4KB | YES           | YES                 | no             |
-| [ARSON](https://github.com/benjamn/arson)                            |     2048.1KB |         361.5KB | theoretically | YES                 | arguably       |
-| [bencode](https://wiki.theory.org/BitTorrentSpecification#Bencoding) |     2208.2KB |         273.8KB | no            | no                  | arguably       |
-| [edn](https://github.com/edn-format/edn)                             |     2257.8KB |         261.2KB | YES           | no                  | YES            |
-| [JSON](http://www.json.org/)                                         |     2276.0KB |         260.9KB | no            | no                  | arguably       |
-| [BSON](http://bsonspec.org/)                                         |     2353.0KB |         314.4KB | YES           | YES                 | no             |
-| [YAML](http://yaml.org/)                                             |     2444.7KB |         275.7KB | YES           | no                  | YES            |
+| name                                             | encoded size | gzip compressed | extensible    | rich built-in types | human-readable |
+| ------------------------------------------------ | -----------: | --------------: | ----------    | ------------------- | -------------- |
+| *SuperPack*<sup>1</sup>                          |      768.1KB |         225.8KB | YES           | no                  | no             |
+| [Sereal](https://github.com/Sereal/Sereal)       |     1442.2KB |         268.3KB | YES           | no                  | no             |
+| [MessagePack](http://msgpack.org)                |     2019.7KB |         271.7KB | YES           | no                  | no             |
+| *SuperPack*<sup>2</sup>                          |     2024.5KB |         264.5KB | YES           | no                  | no             |
+| [CBOR](http://cbor.io/)                          |     2025.6KB |         270.4KB | YES           | YES                 | no             |
+| [ARSON](https://github.com/benjamn/arson)        |     2048.1KB |         361.5KB | theoretically | YES                 | arguably       |
+| [bencode](https://en.wikipedia.org/wiki/Bencode) |     2208.2KB |         273.8KB | no            | no                  | arguably       |
+| [edn](https://github.com/edn-format/edn)         |     2257.8KB |         261.2KB | YES           | no                  | YES            |
+| [JSON](http://www.json.org/)                     |     2276.0KB |         260.9KB | no            | no                  | arguably       |
+| [BSON](http://bsonspec.org/)                     |     2353.0KB |         314.4KB | YES           | YES                 | no             |
+| [YAML](http://yaml.org/)                         |     2444.7KB |         275.7KB | YES           | no                  | YES            |
 
 1. with built-in optimisations enabled
 1. with no optimisations enabled
